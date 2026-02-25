@@ -36,7 +36,7 @@ const protectedRoutes: ProtectedRoutesConfig = {
 
 import { Geist, Geist_Mono } from "next/font/google";
 
-// 1. DECLARACIÓN DE FUENTES (Fuera de cualquier objeto para evitar el Build Error)
+// 1. DECLARACIÓN DE FUENTES
 const heading = Geist({
   variable: "--font-heading",
   subsets: ["latin"],
@@ -124,7 +124,7 @@ const mailchimp: MailchimpConfig = {
 };
 
 const schema: SchemaConfig = {
-  logo: "/images/nuevo-logo.png", // <--- Asegúrate de que el archivo esté en public/images/
+  logo: "/images/nuevo-logo.png",
   type: "Person",
   name: "Berkley Felix",
   description: "Partner Estratégico para Latinoamérica - CTO LATAM Provider",
