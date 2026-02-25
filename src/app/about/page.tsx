@@ -28,7 +28,6 @@ export async function generateMetadata() {
 }
 
 export default function About() {
-  // Estructura mejorada con validación de datos (optional chaining)
   const structure = [
     {
       title: about.intro?.title,
@@ -234,7 +233,6 @@ export default function About() {
                             key={i}
                             border="neutral-medium"
                             radius="m"
-                            // CORRECCIÓN DE TIPOS PARA VERCEL
                             minWidth={(image as any).width || 100}
                             height={(image as any).height || 100}
                           >
@@ -305,7 +303,6 @@ export default function About() {
                             key={i}
                             border="neutral-medium"
                             radius="m"
-                            // CORRECCIÓN DE TIPOS PARA VERCEL
                             minWidth={(image as any).width || 100}
                             height={(image as any).height || 100}
                           >

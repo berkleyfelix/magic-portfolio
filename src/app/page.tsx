@@ -18,7 +18,8 @@ export async function generateMetadata() {
         description: about.description,
         baseURL: baseURL,
         path: about.path,
-        image: about.image,
+        // CORRECCIÓN: Se eliminó about.image porque no existe y causaba error de build
+        image: person.avatar, 
     });
 }
 
