@@ -22,7 +22,7 @@ export async function generateMetadata() {
     });
 }
 
-export default function About() {
+export default function Home() {
     return (
         <Column fillWidth horizontal="center" gap="m">
             <Schema
@@ -52,7 +52,7 @@ export default function About() {
 
                 <RevealFx translateY="12" delay={0.4}>
                     <Flex fillWidth direction="column" gap="s">
-                        {/* Se agrega el encadenamiento opcional ?. para evitar errores si sections no existe */}
+                        {/* 1. SOLUCIÓN AL ERROR 'reading map': Usamos encadenamiento opcional ?. */}
                         {about.sections?.map((section, index) => (
                             <Column key={index} gap="m">
                                 <Heading variant="display-strong-xs">{section.title}</Heading>
@@ -66,7 +66,7 @@ export default function About() {
                                                 key={imgIndex}
                                                 border="neutral-medium"
                                                 radius="m"
-                                                // Mantenemos 'as any' para evitar el error de compilación de Vercel visto en los logs
+                                                // 2. SOLUCIÓN AL ERROR DE VERCEL: Cast 'as any' para width/height
                                                 minWidth={(image as any).width || 200}
                                                 height={(image as any).height || 200}
                                                 style={{ overflow: 'hidden' }}
@@ -89,7 +89,7 @@ export default function About() {
                     <Column fillWidth gap="m">
                         <Heading variant="display-strong-xs">Mis Redes</Heading>
                         <Row gap="s" wrap>
-                            {/* Se agrega ?. para asegurar que el mapeo de redes sociales no falle */}
+                            {/* 3. MEJORA: Validación para el mapeo de redes sociales */}
                             {person.social?.map((social, index) => (
                                 <Button
                                     key={index}

@@ -28,26 +28,27 @@ export async function generateMetadata() {
 }
 
 export default function About() {
+  // Estructura mejorada con validación de datos (optional chaining)
   const structure = [
     {
-      title: about.intro.title,
-      display: about.intro.display,
+      title: about.intro?.title,
+      display: about.intro?.display,
       items: [],
     },
     {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
+      title: about.work?.title,
+      display: about.work?.display,
+      items: about.work?.experiences?.map((experience) => experience.company) || [],
     },
     {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
+      title: about.studies?.title,
+      display: about.studies?.display,
+      items: about.studies?.institutions?.map((institution) => institution.name) || [],
     },
     {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      title: about.technical?.title,
+      display: about.technical?.display,
+      items: about.technical?.skills?.map((skill) => skill.title) || [],
     },
   ];
 
@@ -66,7 +67,7 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      {about.tableOfContent.display && (
+      {about.tableOfContent?.display && (
         <Column
           left="0"
           style={{ top: "50%", transform: "translateY(-50%)" }}
@@ -79,7 +80,7 @@ export default function About() {
         </Column>
       )}
       <Row fillWidth s={{ direction: "column" }} horizontal="center">
-        {about.avatar.display && (
+        {about.avatar?.display && (
           <Column
             className={styles.avatar}
             top="64"
@@ -112,13 +113,13 @@ export default function About() {
         )}
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
           <Column
-            id={about.intro.title}
+            id={about.intro?.title}
             fillWidth
             minHeight="160"
             vertical="center"
             marginBottom="32"
           >
-            {about.calendar.display && (
+            {about.calendar?.display && (
               <Row
                 fitWidth
                 border="brand-alpha-medium"
@@ -153,7 +154,7 @@ export default function About() {
             >
               {person.role}
             </Text>
-            {social.length > 0 && (
+            {social?.length > 0 && (
               <Row
                 className={styles.blockAlign}
                 paddingTop="20"
@@ -194,19 +195,19 @@ export default function About() {
             )}
           </Column>
 
-          {about.intro.display && (
+          {about.intro?.display && (
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about.intro.description}
             </Column>
           )}
 
-          {about.work.display && (
+          {about.work?.display && (
             <>
               <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
+                {about.work.experiences?.map((experience, index) => (
                   <Column key={`${experience.company}-${index}`} fillWidth>
                     <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
                       <Text id={experience.company} variant="heading-strong-l">
@@ -220,7 +221,7 @@ export default function About() {
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: React.ReactNode, i: number) => (
+                      {experience.achievements?.map((achievement: React.ReactNode, i: number) => (
                         <Text as="li" variant="body-default-m" key={i}>
                           {achievement}
                         </Text>
@@ -233,6 +234,7 @@ export default function About() {
                             key={i}
                             border="neutral-medium"
                             radius="m"
+                            // CORRECCIÓN DE TIPOS PARA VERCEL
                             minWidth={(image as any).width || 100}
                             height={(image as any).height || 100}
                           >
@@ -253,13 +255,13 @@ export default function About() {
             </>
           )}
 
-          {about.studies.display && (
+          {about.studies?.display && (
             <>
               <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
+                {about.studies.institutions?.map((institution, index) => (
                   <Column key={`${institution.name}-${index}`} fillWidth gap="4">
                     <Text id={institution.name} variant="heading-strong-l">
                       {institution.name}
@@ -273,13 +275,13 @@ export default function About() {
             </>
           )}
 
-          {about.technical.display && (
+          {about.technical?.display && (
             <>
               <Heading as="h2" id={about.technical.title} variant="display-strong-s" marginBottom="40">
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
+                {about.technical.skills?.map((skill, index) => (
                   <Column key={`${skill.title}-${index}`} fillWidth gap="4">
                     <Text id={skill.title} variant="heading-strong-l">
                       {skill.title}
@@ -303,6 +305,7 @@ export default function About() {
                             key={i}
                             border="neutral-medium"
                             radius="m"
+                            // CORRECCIÓN DE TIPOS PARA VERCEL
                             minWidth={(image as any).width || 100}
                             height={(image as any).height || 100}
                           >

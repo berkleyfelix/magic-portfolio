@@ -74,7 +74,7 @@ const style: StyleConfig = {
   surface: "translucent",
   transition: "all",
   scaling: "100",
-};
+}; // El error estaba aquí: se eliminó el marcador de conflicto
 
 const dataStyle: DataStyleConfig = {
   variant: "gradient",
