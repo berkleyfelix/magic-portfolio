@@ -241,15 +241,15 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            minWidth={image.width}
-                            height={image.height}
+                            minWidth={(image as any).width}
+                            height={(image as any).height}
                           >
                             <Media
                               enlarge
                               radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
+                              sizes={(image as any).width?.toString() || "100"}
+                              alt={(image as any).alt}
+                              src={(image as any).src}
                             />
                           </Row>
                         ))}
@@ -316,15 +316,15 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            minWidth={image.width}
-                            height={image.height}
+                            minWidth={(image as any).width}
+                            height={(image as any).height}
                           >
                             <Media
                               enlarge
                               radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
+                              sizes={(image as any).width?.toString() || "100"}
+                              alt={(image as any).alt}
+                              src={(image as any).src}
                             />
                           </Row>
                         ))}
