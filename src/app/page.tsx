@@ -3,7 +3,6 @@ import {
     Flex,
     Heading,
     RevealFx,
-    Tag,
     Text,
     Media,
     Row,
@@ -53,7 +52,8 @@ export default function About() {
 
                 <RevealFx translateY="12" delay={0.4}>
                     <Flex fillWidth direction="column" gap="s">
-                        {about.sections.map((section, index) => (
+                        {/* Se agrega el encadenamiento opcional ?. para evitar errores si sections no existe */}
+                        {about.sections?.map((section, index) => (
                             <Column key={index} gap="m">
                                 <Heading variant="display-strong-xs">{section.title}</Heading>
                                 <Text variant="body-default-m" onBackground="neutral-weak">
@@ -66,7 +66,7 @@ export default function About() {
                                                 key={imgIndex}
                                                 border="neutral-medium"
                                                 radius="m"
-                                                // Corrección aquí: 'as any' para evitar el error de compilación de Vercel
+                                                // Mantenemos 'as any' para evitar el error de compilación de Vercel visto en los logs
                                                 minWidth={(image as any).width || 200}
                                                 height={(image as any).height || 200}
                                                 style={{ overflow: 'hidden' }}
@@ -89,7 +89,8 @@ export default function About() {
                     <Column fillWidth gap="m">
                         <Heading variant="display-strong-xs">Mis Redes</Heading>
                         <Row gap="s" wrap>
-                            {person.social.map((social, index) => (
+                            {/* Se agrega ?. para asegurar que el mapeo de redes sociales no falle */}
+                            {person.social?.map((social, index) => (
                                 <Button
                                     key={index}
                                     href={social.link}
